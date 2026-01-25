@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atención por WhatsApp</title>
+
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src='https://connect.facebook.net/en_US/fbevents.js';
+    s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script');
+
+    fbq('init', '815840598101895');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=815840598101895&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
+  <style>
+    :root{
+      --brand:#16a34a;
+      --brand2:#22c55e;
+      --ink:#0b1220;
+      --muted:#5b6474;
+      --bg1:#ecfdf5;
+      --bg2:#d1fae5;
+      --card: rgba(255,255,255,.78);
+      --shadow: 0 10px 30px rgba(2,6,23,.10);
+      --radius: 18px;
+      --footerH: 58px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      color:var(--ink);
+      background: radial-gradient(1200px 700px at 20% 10%, #ffffff 0%, var(--bg1) 35%, var(--bg2) 100%);
+      padding: 18px;
+      padding-bottom: calc(var(--footerH) + 26px);
+      display:flex;
+      justify-content:center;
+    }
+
+    .wrap{
+      width:min(920px, 100%);
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 10px 6px 16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius:999px;
+      background: rgba(34,197,94,.12);
+      border: 1px solid rgba(34,197,94,.22);
+      color:#0f5132;
+      font-weight:700;
+      font-size: 13px;
+      white-space:nowrap;
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(15,23,42,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero{
+      padding: 18px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 16px;
+      align-items:center;
+    }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(24px, 3.2vw, 38px);
+      line-height: 1.1;
+      letter-spacing: -0.6px;
+    }
+
+    .sub{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.45;
+    }
+
+    .ctaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 14px 16px;
+      border-radius: 999px;
+      font-weight:800;
+      text-decoration:none;
+      border: 0;
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease;
+      width: min(520px, 100%);
+    }
+
+    .btnPrimary{
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(34,197,94,.25);
+    }
+
+    .btnPrimary:hover{ transform: translateY(-1px); }
+
+    .mini{
+      font-size: 12.5px;
+      color: var(--muted);
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .pill{
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.7);
+      border-radius:999px;
+      padding: 8px 10px;
+      font-weight:700;
+      font-size: 12px;
+      color:#0f172a;
+    }
+
+    .side{
+      padding: 16px;
+      border-radius: calc(var(--radius) - 2px);
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(15,23,42,.07);
+    }
+
+    .sideTitle{
+      font-weight: 800;
+      margin: 0 0 10px;
+      font-size: 14px;
+    }
+
+    .list{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 13.5px;
+    }
+
+    .grid2{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .box{
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(15,23,42,.08);
+    }
+
+    .box h3{
+      margin: 0 0 6px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .box p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    details{
+      border-top: 1px solid rgba(15,23,42,.08);
+      padding: 12px 0;
+    }
+    details:first-of-type{ border-top: 0; }
+    summary{
+      cursor:pointer;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    details p{
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .legal{
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(15,23,42,.08);
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+
+    .footer{
+      position: fixed;
+      left:0; bottom:0;
+      width:100%;
+      height: var(--footerH);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 0 14px;
+      background: linear-gradient(to right, #16a34a, #22c55e);
+      color:#fff;
+      font-weight:900;
+      font-size: 13.5px;
+      z-index:50;
+      text-align:center;
+    }
+
+    .notif{
+      position: fixed;
+      bottom: calc(var(--footerH) + 16px);
+      left: 12px;
+      max-width: calc(100vw - 24px);
+      background: rgba(2,6,23,.92);
+      color:#fff;
+      padding: 10px 12px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      z-index:60;
+      animation: fade 8s infinite;
+    }
+
+    @keyframes fade{
+      0%,100%{ opacity:0; transform: translateY(10px); }
+      12%,88%{ opacity:1; transform: translateY(0); }
+    }
+
+    .avatar{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.12);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex: 0 0 auto;
+      font-weight: 900;
+    }
+
+    .notif b{ display:block; font-size: 12.5px; }
+    .notif span{ display:block; font-size: 12px; opacity:.9; }
+
+    @media (max-width: 820px){
+      header{ flex-direction:column; align-items:flex-start; }
+      .heroGrid{ grid-template-columns: 1fr; }
+      .grid2{ grid-template-columns: 1fr; }
+      .badge{ align-self:flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <span style="font-size:20px">💬</span>
+        <span>Atención por WhatsApp</span>
+      </div>
+      <div class="badge">✅ Atención en línea • Respuesta rápida</div>
+    </header>
+
+    <section class="card hero" aria-label="Sección principal">
+      <div class="heroGrid">
+        <div>
+          <h1>Contactanos por WhatsApp y te atendemos al instante</h1>
+          <p class="sub">
+            Canal directo con nuestro equipo para consultas, asistencia y gestión de tu cuenta.
+            Sin formularios largos: un mensaje y listo.
+          </p>
+
+          <div class="ctaRow">
+            <a id="btnWhatsApp" class="btn btnPrimary" href="#" target="_blank" rel="noopener noreferrer">
+              📲 Abrir WhatsApp
+            </a>
+            <div class="mini">
+              <span class="pill">🔒 Comunicación directa</span>
+              <span class="pill">🕒 24/7 según disponibilidad</span>
+              <span class="pill">✅ Soporte y orientación</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="side" aria-label="Información">
+          <p class="sideTitle">Antes de escribir</p>
+          <ul class="list">
+            <li>Contanos tu consulta en 1–2 líneas.</li>
+            <li>Si aplica, indicá tu nombre o ID de usuario.</li>
+            <li>Te respondemos por orden de llegada.</li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="grid2" aria-label="Beneficios">
+        <div class="box">
+          <h3>✅ Verificación y asistencia</h3>
+          <p>Te guiamos con pasos claros para resolver tu solicitud.</p>
+        </div>
+        <div class="box">
+          <h3>⚡ Respuesta rápida</h3>
+          <p>Atención por mensajería para agilizar consultas frecuentes.</p>
+        </div>
+        <div class="box">
+          <h3>🧾 Información transparente</h3>
+          <p>Condiciones y requisitos explicados de forma simple.</p>
+        </div>
+        <div class="box">
+          <h3>🛡️ Buenas prácticas</h3>
+          <p>Recomendaciones de seguridad para proteger tu cuenta.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:14px; padding:16px;" aria-label="Preguntas frecuentes">
+      <h2 style="margin:0 0 10px; font-size:16px; font-weight:900;">Preguntas frecuentes</h2>
+
+      <details>
+        <summary>¿Cuánto tardan en responder?</summary>
+        <p>Depende del volumen de mensajes. En general respondemos lo antes posible y por orden de llegada.</p>
+      </details>
+
+      <details>
+        <summary>¿Qué datos tengo que enviar?</summary>
+        <p>Solo lo necesario para tu consulta. Evitá compartir contraseñas o códigos de verificación.</p>
+      </details>
+
+      <details>
+        <summary>¿Es un canal oficial?</summary>
+        <p>Este sitio te dirige al WhatsApp indicado. Verificá el número antes de enviar información sensible.</p>
+      </details>
+    </section>
+
+    <div class="legal">
+      <b>Importante:</b> Este sitio es informativo y de contacto. No garantiza resultados.
+      Aplican términos y condiciones. Solo para mayores de 18 años donde corresponda.
+    </div>
+
+    <div class="notif" id="notif" aria-live="polite">
+      <div class="avatar">i</div>
+      <div>
+        <b id="notifTitle">Consejo de seguridad</b>
+        <span id="notifText">Nunca compartas tu contraseña ni códigos de verificación.</span>
+      </div>
+    </div>
+
+    <div class="footer">
+      ✅ Atención por WhatsApp • Respuesta rápida (según disponibilidad)
+    </div>
+  </div>
+
+  <script>
+    // ===== Config =====
+    const WA_PHONE = "5491128837956";
+    const WA_MESSAGE = "Hola, quiero hacer una consulta. ¿Me ayudan por favor?";
+
+    // ===== WhatsApp link + Pixel event =====
+    const btn = document.getElementById("btnWhatsApp");
+    const waUrl = "https://wa.me/" + WA_PHONE + "?text=" + encodeURIComponent(WA_MESSAGE);
+    btn.href = waUrl;
+
+    btn.addEventListener("click", () => {
+      const eventId = "wa_" + Date.now();
+      try{
+        fbq('trackCustom', 'ClickWhatsApp', {}, { eventID: eventId });
+        fbq('track', 'Lead', {}, { eventID: eventId });
+      }catch(e){}
+    });
+
+    // ===== Rotating safety/info tips (neutral) =====
+    const tips = [
+      { t: "Consejo de seguridad", x: "Nunca compartas tu contraseña ni códigos de verificación." },
+      { t: "Recomendación", x: "Describí tu consulta en 1–2 líneas para acelerar la respuesta." },
+      { t: "Atención", x: "Verificá el número de WhatsApp antes de enviar datos personales." },
+      { t: "Privacidad", x: "Evitá enviar fotos de documentos si no es estrictamente necesario." }
+    ];
+
+    let i = 0;
+    function rotateTip(){
+      const item = tips[i % tips.length];
+      document.getElementById("notifTitle").textContent = item.t;
+      document.getElementById("notifText").textContent = item.x;
+      i++;
+    }
+
+    setInterval(rotateTip, 9000);
+    rotateTip();
+  </script>
+</>
+</html>
